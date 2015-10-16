@@ -1,0 +1,46 @@
+{
+  "name": "email-obfuscate",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run clean && webpack-dev-server --config example/webpack.config.js --progress --hot --inline",
+    "test": "karma start",
+    "lint": "eslint src",
+    "build": "npm run lint && karma start --single-run && npm run build-examples && npm run build-lib",
+    "build-lib": "rm -rf lib && mkdir lib && babel --loose --stage 0 --out-dir lib src",
+    "build-examples": "npm run clean && webpack --config example/webpack.config.build.js --progress",
+    "clean": "rm -f example/bundle.js example/bundle.js.map",
+    "gh-pages": "git checkout gh-pages && git rebase origin/master --force-rebase && npm run build && git add . && git commit --amend --no-edit && git push --force && git checkout master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dunckr/email-obfuscate"
+  },
+  "keywords": [],
+  "author": "Duncan Beaton <dunckr@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dunckr/email-obfuscate/issues"
+  },
+  "homepage": "https://github.com/dunckr/email-obfuscate",
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "^5.4.7",
+    "babel-eslint": "^3.1.11",
+    "babel-loader": "^5.1.3",
+    "eslint": "^0.22.1",
+    "eslint-loader": "^0.12.0",
+    "expect": "^1.6.0",
+    "karma": "^0.13.11",
+    "karma-cli": "^0.1.1",
+    "karma-mocha": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.3.3",
+    "object-assign": "^4.0.1",
+    "require-dir": "^0.3.0",
+    "webpack": "^1.9.10",
+    "webpack-dev-server": "^1.9.0"
+  }
+}
