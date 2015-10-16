@@ -1,13 +1,18 @@
-# Lib Starter
+# Email Obfuscate
 
-Simple boilerplate for creating Libraries. Using Babel, Webpack, Karma and ESLint.
+```
+function emailObfuscate(’.selector’, {
+  name: ‘test’,
+  domain: ‘example’,
+  tld: ‘com’
+});
+```
 
-+ ES2015 (Babel)
-+ Livereloading (Webpack)
-+ Testing (Karma + Mocha + Expect)
-+ Linting (ESLint)
-+ Library Independant (No React but can be easily included)
-+ Build (Webpack)
+ use case to prevent
+ https://en.wikipedia.org/wiki/Email_address_harvesting
+ difficulties match style
+ allow interaction the same
+
 
 ## Dev
 
@@ -29,7 +34,7 @@ npm run build
 
 ## Demo
 
-[http://dunckr.github.io/lib-starter/example/](http://dunckr.github.io/lib-starter/example/)
+[http://dunckr.github.io/email-obfuscate/example/](http://dunckr.github.io/email-obfuscate/example/)
 
 ## License
 

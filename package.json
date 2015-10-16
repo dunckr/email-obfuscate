@@ -24,7 +24,9 @@
     "url": "https://github.com/dunckr/email-obfuscate/issues"
   },
   "homepage": "https://github.com/dunckr/email-obfuscate",
-  "dependencies": {},
+  "dependencies": {
+    "object-assign": "^4.0.1"
+  },
   "devDependencies": {
     "babel": "^5.4.7",
     "babel-eslint": "^3.1.11",
@@ -38,7 +40,6 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.3.3",
-    "object-assign": "^4.0.1",
     "require-dir": "^0.3.0",
     "webpack": "^1.9.10",
     "webpack-dev-server": "^1.9.0"
