@@ -9,10 +9,11 @@ export default class CanvasText {
   create() {
     this._createCanvas();
     this._createText();
+    this.parent.addEventListener('click', () => this.handleOnClick());
   }
 
   handleOnClick() {
-    // add click event to open email address
+    window.location.href = `mailto:${this.options.text}`;
   }
 
   handleOnHover() {
