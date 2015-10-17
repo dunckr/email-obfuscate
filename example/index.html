@@ -2,40 +2,50 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./main.css" >
+  <title>Email Obfuscate</title>
+  <link rel="stylesheet" href="./style.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans|Josefin+Sans|Arvo|Lato|Volkhov|Abril+Fatface|Ubuntu|PT+Serif|Droid+Sans|Old+Standard+TT' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-  <div class="site-wrapper">
-
-    <div class="site-wrapper-inner">
-
-      <div class="cover-container">
-
-        <div class="masthead clearfix">
-          <div class="inner">
-            <h2 class="masthead-brand text-center">Email Obfuscate</h2>
-          </div>
-        </div>
-
-        <div class="inner cover">
-          <select id="fontSelection" class="form-control"></select>
-
-          <a href="mailto:test@example.com">test@example.com</a>
-
-          <div id="email"></div>
-
-        </div>
-
-        <div class="mastfoot">
-          <div class="inner">
-            <p>footer</p>
-          </div>
-        </div>
-      </div>
+  <header class="island">
+    <div class="wrap">
+      <h1 class="">Email Obfuscate</h1>
+      <p>Prevent email addresses from being scraped.</p>
     </div>
-  </div>
+  </header>
+  <section class="example">
+    <div class="wrap">
+      <h3>Clear:</h3>
+    </div>
+    <div class="example__sample">
+      <a href="mailto:test@example.com">test@example.com</a>
+    </div>
+    <div class="example__title">
+      <h3>Obfuscated:</h3>
+    </div>
+    <div class="example__sample">
+      <p id="email"></p>
+    </div>
+  </section>
+  <section class="island">
+    <div class="wrap">
+      <form>
+        <label for="fontSelection">Change Font:</label>
+        <select id="fontSelection" name="fontSelection"></select>
+      </form>
+    </div>
+  </section>
+  <section class="island">
+    <div class="wrap">
+      <a href="https://github.com/dunckr/email-obfuscate">View on Github</a>
+    </div>
+  </section>
+  <footer class="island">
+    <div class="wrap">
+      <p>by <a href="http://dunckr.com">dunckr</a></p>
+    </div>
+  </footer>
 
   <script src="bundle.js"></script>
 </body>

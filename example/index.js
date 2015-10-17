@@ -1,18 +1,39 @@
 import EmailObfuscate from '../src';
-
-var el = document.getElementById('email');
-EmailObfuscate(el, {});
-
-// FIXME add google fonts
-var fontList = [
+const fontList = [
+  'Abril Fatface',
   'Arial',
-  'Trebuchet MS',
-  'Verdana',
+  'Arvo',
+  'Courier New',
+  'Droid Sans',
+  'Josefin Sans',
+  'Lato',
   'Lucida Bright',
+  'Old Standard TT',
+  'Open Sans',
   'Palatino',
+  'PT Serif',
   'Times New Roman',
-  'Courier New'
+  'Trebuchet MS',
+  'Ubuntu',
+  'Verdana',
+  'Volkhov'
 ];
+
+var emailObfuscate = () => {
+  var el = document.getElementById('email');
+  EmailObfuscate(el, {});
+}
+
+var generateStyle = (fontFamily) => {
+  var css = `a { font-family: "${fontFamily}" }`;
+  var style = document.createElement('style');
+  style.appendChild(document.createTextNode(css));
+  var exisitingStyle = document.head.getElementsByTagName('style');
+  if (exisitingStyle.length > 0) {
+    exisitingStyle[0].remove();
+  }
+  document.head.appendChild(style);
+}
 
 var fontSelectionEl = document.getElementById('fontSelection');
 fontList.map((font) => {
@@ -25,18 +46,7 @@ fontList.map((font) => {
 fontSelectionEl.addEventListener('change', function(e) {
   var fontFamily = e.target.value;
   generateStyle(fontFamily);
-
-  var el = document.getElementById('email');
-  EmailObfuscate(el, {});
+  emailObfuscate();
 });
 
-var generateStyle = (fontFamily) => {
-  var css = `a { font-family: "${fontFamily}" }`;
-  var style = document.createElement('style');
-  style.appendChild(document.createTextNode(css));
-  var exisitingStyle = document.head.getElementsByTagName('style');
-  if (exisitingStyle.length > 0){
-    exisitingStyle[0].remove();
-  }
-  document.head.appendChild(style);
-}
+emailObfuscate();
