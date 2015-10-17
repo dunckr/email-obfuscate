@@ -1,5 +1,7 @@
 # Email Obfuscate
 
+**WIP***
+
 ```
 function emailObfuscate(’.selector’, {
   name: ‘test’,

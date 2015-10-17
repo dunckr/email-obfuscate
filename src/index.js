@@ -1,14 +1,23 @@
+import assign from 'object-assign';
 import PseudoElement from './pseudoElement';
 import CanvasText from './canvasText';
 
-// take in options...
-export default (options) => {
+// FIXME should
+//name: ‘test’,
+//domain: ‘example’,
+//tld: ‘com’
+var DEFAULTS = {
+  text: 'test@example.com'
+};
 
-  var pseudoElement = new PseudoElement();
-  var style = pseudoElement.calculateAttributes();
+export default (el, opts={}) => {
 
-  var canvasText = new CanvasText({ style: style });
+  var options = assign(DEFAULTS, opts);
 
-  console.log(canvasText);
+  var pseudoElement = new PseudoElement(el, options);
+  var style = pseudoElement.determineStyle();
 
+  var canvasText = new CanvasText(el, style);
+  canvasText.create();
+  return el;
 };

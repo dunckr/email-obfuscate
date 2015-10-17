@@ -1,72 +1,62 @@
-// create the canvas
-// must have extra pixels - down size for retina
-// positioning difficult  - ctx.textAlign="left";
-
-// add text to the canvas that matches the pseduo
-// provide overrides
-
-// change the text on hover similar to default behaviour
-
-// add click event to open email address
-// provide shorthand to set subject etc
-// make sure can just use default href will override
-
-
-import assign from 'object-assign';
-
-
-var DEFAULTS = {
-  text: 'test@example.com',
-  href: 'test@example.com',
-  parent: window.document.body,
-  style: {
-  }
-};
-
 export default class CanvasText {
 
-  constructor(options = {}) {
-    this.options = assign(DEFAULTS, options);
-
-    this.createCanvas();
-    this.createText();
+  constructor(parent, options = {}) {
+    if (!parent) { throw new Error('Require DOM element'); }
+    this.parent = parent;
+    this.options = options;
   }
 
-  createCanvas() {
-    // FIXME passed in as options
-    this.canvas = document.getElementsByTagName('canvas')[0];
+  create() {
+    this._createCanvas();
+    this._createText();
+  }
+
+  handleOnClick() {
+    // add click event to open email address
+  }
+
+  handleOnHover() {
+    // at least do an underline
+    // change the text on hover similar to default behaviour
+  }
+
+  _createCanvas() {
+    var exisitingCanvas = this.parent.getElementsByTagName('canvas').length > 0;
+    if (exisitingCanvas) {
+      this.canvas = this.parent.getElementsByTagName('canvas')[0];
+    } else {
+      this.canvas = document.createElement('canvas');
+    }
     this.context = this.canvas.getContext('2d');
+    this._styleCanvas();
+    if (!exisitingCanvas) {
+      this.parent.appendChild(this.canvas);
+    }
+  }
 
-    window.canvas = this.canvas;
-
-    var width = this.options.style.width;
-    var height = this.options.style.height;
+  _styleCanvas() {
+    var width = this.options.width;
+    var height = this.options.height;
     var ratio = this._calculateRatio();
-
     this.canvas.width = width * ratio;
     this.canvas.height = height * ratio;
-
     this.canvas.style.width = `${width}px`;
     this.canvas.style.height = `${height}px`;
     this.context.scale(ratio, ratio);
     this.canvas.style.cursor = 'pointer';
   }
 
-  createText() {
+  _createText() {
     this.context.textAlign = 'left';
     this.context.textBaseline = 'bottom';
-    console.log(this.options.style.font);
-    this.context.font = this.options.style.font;
-    this.context.fillStyle = this.options.style.color;
-    this.context.fillText(this.options.text, 0, this.options.style.height);
-    // FIXME magic number
-    this.context.fillRect(0, this.options.style.height - 3.5, this.options.style.width, 1.5);
-  }
-
-  handleOnClick() {}
-
-  handleOnHover() {
-    // at least do an underline
+    this.context.font = this.options.font;
+    this.context.fillStyle = this.options.color;
+    this.context.fillText(this.options.text, 0, this.options.height);
+    if (this.options.underline) {
+      var underlineSize = this.options.fontSize / 10;
+      var offset = 2;
+      this.context.fillRect(0, this.options.height - underlineSize - offset, this.options.width, underlineSize);
+    }
   }
 
   _calculateRatio() {

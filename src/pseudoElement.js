@@ -1,56 +1,47 @@
-import assign from 'object-assign';
-
-var DEFAULTS = {
-  text: 'test@example.com',
-  href: 'test@example.com',
-  parent: window.document.body,
-  style: {
-    visibility: 'hidden'
-  }
-};
-
 export default class PseudoElement {
 
-  constructor(options={}) {
-    this.options = assign(DEFAULTS, options);
+  constructor(parent, options) {
+    if (!parent) { throw new Error('Require DOM element'); }
+    this.parent = parent;
+    this.options = options;
   }
 
-  calculateAttributes() {
+  determineStyle() {
     this._createElement();
-    this._appendToDOM();
-    var style = this._computeStyle();
-    window.element = this.element;
-    console.log(this.element.offsetHeight);
-
-    return {
-      font: style.font,
-      color: style.color,
+    this._insertElement();
+    var computedStyle = this._computeStyle();
+    var fontSizeNumber = Number(computedStyle.fontSize.slice(0, -2));
+    var attributes = {
+      font: computedStyle.font,
+      color: computedStyle.color,
       width: this.element.offsetWidth,
-      height: this.element.offsetHeight
+      height: this.element.offsetHeight,
+      fontSize: fontSizeNumber,
+      underline: computedStyle.textDecoration === 'underline',
+      text: this.options.text
     };
+    this.parent.removeChild(this.element);
+    return attributes;
   }
 
   _createElement() {
     this.element = document.createElement('a');
-    assign(this.element.style, this.options.style);
-    this.element.innerText = this.options.text;
+    this.element.style.visibility = 'hidden';
+    this.element.innerText = this._obfuscateText();
     this.element.href = this.options.href;
   }
 
-  _appendToDOM() {
-    this.options.parent.appendChild(this.element);
+  _insertElement() {
+    this.parent.appendChild(this.element);
   }
 
   _computeStyle() {
-    // FIXME not supported in IE8
-    if (!window.getComputedStyle) {
-      // # FIXME use defaults
-      return {
-        font: 'Times New Roman',
-        color: 'Black'
-      };
-    }
     return window.getComputedStyle(this.element);
+  }
+
+  _obfuscateText() {
+    // FIXME don't write email address to DOM
+    return this.options.text;
   }
 
 }
