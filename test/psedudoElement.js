@@ -29,7 +29,7 @@ describe('pseudoElement', () => {
     var style = subject.determineStyle();
     expect(style.color).toEqual('rgb(0, 0, 0)');
     expect(style.fontSize).toBe(16);
-    expect(style.font).toBe('16px \'Times New Roman\'');
+    expect(style.font).toContain('16px');
     expect(style.text).toEqual('email@obfuscate.js');
     expect(style.underline).toEqual(false);
     expect(style.width).toBeGreaterThan(120);
