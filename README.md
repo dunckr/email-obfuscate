@@ -1,4 +1,4 @@
-# Email Obfuscate
+# Email Obfuscate [![Build Status](https://travis-ci.org/dunckr/email-obfuscate.svg?branch=master)](https://travis-ci.org/dunckr/email-obfuscate)
 
 Help prevent email addresses from being scraped.
 
