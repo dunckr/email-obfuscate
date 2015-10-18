@@ -35,6 +35,11 @@ body {
   }
 }
 
+.title {
+  color: transparent;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
 .example a {
   color: #337ab7;
   text-decoration: underline;

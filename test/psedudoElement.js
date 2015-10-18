@@ -26,15 +26,14 @@ describe('pseudoElement', () => {
       tld: 'js'
     };
     subject = new describeClass(el, options);
-    expect(subject.determineStyle()).toEqual({
-      color: 'rgb(0, 0, 0)',
-      font: '',
-      fontSize: 16,
-      height: 17,
-      text: 'email@obfuscate.js',
-      underline: false,
-      width: 123
-    });
+    var style = subject.determineStyle();
+    expect(style.color).toEqual('rgb(0, 0, 0)');
+    expect(style.font).toEqual('');
+    expect(style.fontSize).toBe(16);
+    expect(style.text).toEqual('email@obfuscate.js');
+    expect(style.underline).toEqual(false);
+    expect(style.width).toBeGreaterThan(120);
+    expect(style.height).toBeGreaterThan(15);
   });
 
 });
