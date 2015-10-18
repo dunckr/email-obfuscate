@@ -47,7 +47,7 @@ var generateStyle = (fontFamily) => {
   style.appendChild(document.createTextNode(css));
   var exisitingStyle = document.head.getElementsByTagName('style');
   if (exisitingStyle.length > 0) {
-    exisitingStyle[0].remove();
+    document.head.removeChild(exisitingStyle[0]);
   }
   document.head.appendChild(style);
 }
