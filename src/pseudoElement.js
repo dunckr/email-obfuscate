@@ -4,7 +4,6 @@ export default class PseudoElement {
     if (!parent) { throw new Error('Require DOM element'); }
     this.parent = parent;
     this.options = options;
-    this.text = this._generateText();
   }
 
   determineStyle() {
@@ -13,13 +12,13 @@ export default class PseudoElement {
     var computedStyle = this._computeStyle();
     var fontSizeNumber = Number(computedStyle.fontSize.slice(0, -2));
     var attributes = {
-      font: computedStyle.font,
+      font: `${computedStyle.fontSize} ${computedStyle.fontFamily}`,
+      fontSize: fontSizeNumber,
       color: computedStyle.color,
       width: this.element.offsetWidth,
       height: this.element.offsetHeight,
-      fontSize: fontSizeNumber,
       underline: computedStyle.textDecoration === 'underline',
-      text: this.text
+      text: this._generateText()
     };
     this.parent.removeChild(this.element);
     return attributes;
@@ -28,7 +27,7 @@ export default class PseudoElement {
   _createElement() {
     this.element = document.createElement('a');
     this.element.style.visibility = 'hidden';
-    this.element.innerText = this._obfuscateText();
+    this.element.innerHTML = this._obfuscateText();
   }
 
   _insertElement() {

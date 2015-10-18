@@ -60,7 +60,7 @@ var generateSelection = () => {
   }
   fontList.map((font) => {
     var el = document.createElement('option');
-    el.innerText = font;
+    el.innerHTML = font;
     el.value = font;
     fontSelectionEl.appendChild(el);
   });
