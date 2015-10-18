@@ -1,7 +1,8 @@
 export default class CanvasText {
 
-  constructor(parent, options = {}) {
+  constructor(parent, options) {
     if (!parent) { throw new Error('Require DOM element'); }
+    if (!options) { throw new Error('Require options'); }
     this.parent = parent;
     this.options = options;
   }
@@ -10,16 +11,14 @@ export default class CanvasText {
     this._createCanvas();
     this._createText();
     this.parent.addEventListener('click', () => this.handleOnClick());
+    return this.canvas;
   }
 
   handleOnClick() {
     window.location.href = `mailto:${this.options.text}`;
   }
 
-  handleOnHover() {
-    // at least do an underline
-    // change the text on hover similar to default behaviour
-  }
+  handleOnHover() {}
 
   _createCanvas() {
     var exisitingCanvas = this.parent.getElementsByTagName('canvas').length > 0;
@@ -55,7 +54,7 @@ export default class CanvasText {
     this.context.fillText(this.options.text, 0, this.options.height);
     if (this.options.underline) {
       var underlineSize = this.options.fontSize / 10;
-      var offset = 2;
+      var offset = underlineSize;
       this.context.fillRect(0, this.options.height - underlineSize - offset, this.options.width, underlineSize);
     }
   }

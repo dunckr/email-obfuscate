@@ -4,6 +4,10 @@ html {
   text-align: center;
 }
 
+body {
+  font: 100%/1.5 "Roboto", Verdana, sans-serif;
+}
+
 .wrap {
   max-width: 38rem;
   margin: 0 auto;

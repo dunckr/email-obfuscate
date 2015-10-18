@@ -3,19 +3,46 @@ import describeClass from '../src/canvasText';
 
 describe('canvasText', () => {
   var subject;
+  var options = {};
+  var el;
+  var canvas;
 
   beforeEach(() => {
-    //subject = new describeClass();
+    el = document.createElement('div');
+    document.body.appendChild(el);
   });
 
-  it('should create an element without options', () => {});
+  afterEach(() => {
+    document.body.removeChild(el);
+  });
 
-  it('should create an element with options', () => {});
+  it('should throw an error without options', () => {
+    expect(() => new describeClass(el)).toThrow();
+  });
 
-  it('should determine the size', () => {});
+  beforeEach(() => {
+    options = {
+      color: 'rgb(0, 0, 0)',
+      font: '',
+      fontSize: 16,
+      height: 17,
+      text: 'email@obfuscate.js',
+      underline: false,
+      width: 123
+    };
+    subject = new describeClass(el, options);
+  });
 
-  it('should determine the attributes', () => {});
+  describe('creates a canvas element', () => {
 
-  it('should determine the hover state attributes', () => {});
+    it('should have a set width', () => {
+      expect(subject.create().width).toEqual(options.width);
+    });
+
+    it('should have a set height', () => {
+      expect(subject.create().height).toEqual(options.height);
+    });
+
+  });
 
 });

@@ -17,14 +17,14 @@ describe('EmailObfuscate', () => {
     document.body.removeChild(el);
   });
 
-  describe('creates a canvas', () => {
+  describe('creates a canvas element', () => {
 
     it('should have a canvas', () => {
       expect(typeof canvas).toBe('object');
     });
 
     it('should have specific width', () => {
-      expect(canvas.width).toBe(120);
+      expect(canvas.width).toBe(123);
     });
 
     it('should have specific height', () => {

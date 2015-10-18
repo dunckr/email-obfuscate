@@ -4,6 +4,7 @@ export default class PseudoElement {
     if (!parent) { throw new Error('Require DOM element'); }
     this.parent = parent;
     this.options = options;
+    this.text = this._generateText();
   }
 
   determineStyle() {
@@ -18,7 +19,7 @@ export default class PseudoElement {
       height: this.element.offsetHeight,
       fontSize: fontSizeNumber,
       underline: computedStyle.textDecoration === 'underline',
-      text: this.options.text
+      text: this.text
     };
     this.parent.removeChild(this.element);
     return attributes;
@@ -28,7 +29,6 @@ export default class PseudoElement {
     this.element = document.createElement('a');
     this.element.style.visibility = 'hidden';
     this.element.innerText = this._obfuscateText();
-    this.element.href = this.options.href;
   }
 
   _insertElement() {
@@ -40,8 +40,12 @@ export default class PseudoElement {
   }
 
   _obfuscateText() {
-    // FIXME don't write email address to DOM
-    return this.options.text;
+    return `@.${this.options.tld}${this.options.domain}${this.options.name}`;
+  }
+
+  _generateText() {
+    return `${this.options.name}@${this.options.domain}.${this.options.tld}`;
+
   }
 
 }
