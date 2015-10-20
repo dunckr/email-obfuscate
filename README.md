@@ -25,13 +25,13 @@ However, the images could be generated during a build or on the server using [no
 
 ## Installation
 
-```
+```sh
 npm install email-obfuscate
 ```
 
 ## Usage
 
-```
+```js
 import EmailObfuscate from 'email-obfuscate';
 
 var el = document.getElementById('email');
@@ -45,19 +45,19 @@ EmailObfuscate(el, {
 
 ## Dev
 
-```
+```sh
 npm run start
 ```
 
 ## Test
 
-```
+```sh
 npm run test
 ```
 
 ## Build
 
-```
+```sh
 npm run build
 ```
 
