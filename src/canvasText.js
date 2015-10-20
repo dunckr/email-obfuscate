@@ -10,7 +10,7 @@ export default class CanvasText {
   create() {
     this._createCanvas();
     this._createText();
-    this.parent.addEventListener('click', () => this.handleOnClick());
+    this._addEvents();
     return this.canvas;
   }
 
@@ -19,6 +19,10 @@ export default class CanvasText {
   }
 
   handleOnHover() {}
+
+  _addEvents() {
+    this.parent.addEventListener('click', () => this.handleOnClick());
+  }
 
   _createCanvas() {
     var exisitingCanvas = this.parent.getElementsByTagName('canvas').length > 0;

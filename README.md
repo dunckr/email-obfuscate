@@ -19,9 +19,9 @@ However, it must be noted that preventing scraping is an [arms-race](https://en.
 
 This library's aim to prevent searching for ```mailto``` links or using email address regexes.
 
-It does this by constructing an email address from an object then drawing the text as an image using the canvas. 
-As such only browsers with canvas (IE9+) are supported. 
-However, the images could be generated during a build or on the server using [node-canvas](https://github.com/Automattic/node-canvas).
+It does this by constructing an email address from an object then drawing the text as an image using the canvas.
+
+For older browsers without a canvas (IE8) we append an element using the alternate text.
 
 ## Installation
 
@@ -37,9 +37,12 @@ import EmailObfuscate from 'email-obfuscate';
 var el = document.getElementById('email');
 
 EmailObfuscate(el, {
-  name: 'test',
-  domain: 'example',
-  tld: 'com'
+  // Email construct: name@domain.tld
+  name: 'test', 
+  domain: 'example', 
+  tld: 'com', 
+  // Alternate Text
+  altText: 'Email'
 });
 ```
 

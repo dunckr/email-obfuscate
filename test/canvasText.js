@@ -5,7 +5,6 @@ describe('canvasText', () => {
   var subject;
   var options = {};
   var el;
-  var canvas;
 
   beforeEach(() => {
     el = document.createElement('div');
