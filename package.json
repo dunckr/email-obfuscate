@@ -1,17 +1,16 @@
 {
   "name": "email-obfuscate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Help prevent email addresses from being scraped",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "npm run clean && webpack-dev-server --config example/webpack.config.js --progress --hot --inline",
+    "start": "npm run clean && webpack-dev-server --hot",
     "test": "karma start --single-run",
-    "watch": "karma start",
     "lint": "eslint src",
-    "build": "npm run lint && npm run test && npm run build-examples && npm run build-lib",
-    "build-lib": "rm -rf lib && mkdir lib && babel --loose --stage 0 --out-dir lib src",
-    "build-examples": "npm run clean && webpack --config example/webpack.config.build.js --progress",
-    "clean": "rm -f example/bundle.js example/bundle.js.map",
+    "build": "npm run clean && npm run lint && karma start --single-run && npm run build-example && npm run build-lib",
+    "build-lib": "webpack",
+    "build-example": "webpack",
+    "clean": "rm -f example/bundle.js example/bundle.js.map && rm -rf lib && mkdir lib",
     "gh-pages": "git checkout gh-pages && git rebase origin/master --force-rebase && npm run build && git add . && git commit --amend --no-edit && git push --force && git checkout master"
   },
   "repository": {
