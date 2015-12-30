@@ -1,38 +1,37 @@
 import BaseText from './text';
+import Ratio from './ratio';
 
 export default class CanvasText extends BaseText {
 
-  create() {
+  _createElement() {
     this._createCanvas();
     this._createText();
-    this._addEvents();
-    return this.canvas;
   }
 
   _createCanvas() {
     var exisitingCanvas = this.parent.getElementsByTagName('canvas').length > 0;
     if (exisitingCanvas) {
-      this.canvas = this.parent.getElementsByTagName('canvas')[0];
+      this.element = this.parent.getElementsByTagName('canvas')[0];
     } else {
-      this.canvas = document.createElement('canvas');
+      this.element = document.createElement('canvas');
     }
-    this.context = this.canvas.getContext('2d');
+    this.context = this.element.getContext('2d');
     this._styleCanvas();
     if (!exisitingCanvas) {
-      this.parent.appendChild(this.canvas);
+      this.parent.appendChild(this.element);
     }
   }
 
   _styleCanvas() {
     var width = this.options.width;
     var height = this.options.height;
-    var ratio = this._calculateRatio();
-    this.canvas.width = width * ratio;
-    this.canvas.height = height * ratio;
-    this.canvas.style.width = `${width}px`;
-    this.canvas.style.height = `${height}px`;
+    var ratio = new Ratio(this.context).calculate();
+    this.element.width = width * ratio;
+    this.element.height = height * ratio;
+    this.element.style.width = `${width}px`;
+    this.element.style.height = `${height}px`;
     this.context.scale(ratio, ratio);
-    this.canvas.style.cursor = 'pointer';
+    this.element.style.cursor = 'pointer';
   }
 
   _createText() {
@@ -46,22 +45,6 @@ export default class CanvasText extends BaseText {
       var offset = underlineSize;
       this.context.fillRect(0, this.options.height - underlineSize - offset, this.options.width, underlineSize);
     }
-  }
-
-  _calculateRatio() {
-    return this._devicePixelRatio() / this._backingStorePixelRatio();
-  }
-
-  _devicePixelRatio() {
-    return window.devicePixelRatio || 1;
-  }
-
-  _backingStorePixelRatio() {
-    return this.context.webkitBackingStorePixelRatio ||
-      this.context.mozBackingStorePixelRatio ||
-      this.context.msBackingStorePixelRatio ||
-      this.context.oBackingStorePixelRatio ||
-      this.context.backingStorePixelRatio || 1;
   }
 
 }

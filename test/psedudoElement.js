@@ -1,7 +1,7 @@
 import expect from 'expect'
 import describeClass from '../src/pseudoElement';
 
-describe('pseudoElement', () => {
+describe('PseudoElement', () => {
   var subject;
   var el;
   var canvas;

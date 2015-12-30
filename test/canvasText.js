@@ -1,7 +1,7 @@
 import expect from 'expect'
 import describeClass from '../src/canvasText';
 
-describe('canvasText', () => {
+describe('CanvasText', () => {
   var subject;
   var options = {};
   var el;
