@@ -73,7 +73,7 @@ if (TARGET === 'build-example') {
 
 if (TARGET === 'build-lib') {
   module.exports = assign(webpackBase, {
-    entry: paths.SRC,
+    entry: paths.SRC + '/emailObfuscate.js',
     output: {
       path: paths.BUILD,
       libraryTarget: 'umd',
