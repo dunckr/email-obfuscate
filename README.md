@@ -1,5 +1,7 @@
 # Email Obfuscate [![Build Status](https://travis-ci.org/dunckr/email-obfuscate.svg?branch=master)](https://travis-ci.org/dunckr/email-obfuscate)
 
+![Example](https://raw.githubusercontent.com/dunckr/email-obfuscate/master/example/example.jpg)
+
 Help prevent email addresses from being scraped.
 
 ## Demo
@@ -38,9 +40,9 @@ var el = document.getElementById('email');
 
 EmailObfuscate(el, {
   // Email construct: name@domain.tld
-  name: 'test', 
-  domain: 'example', 
-  tld: 'com', 
+  name: 'test',
+  domain: 'example',
+  tld: 'com',
   // Alternate Text
   altText: 'Email'
 });

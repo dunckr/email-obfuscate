@@ -17,22 +17,8 @@ body {
   padding: 1.5rem;
 }
 
-@media (max-width: 768px) {
-  .example a {
-    font-size: 40px;
-  }
-}
-
-@media (min-width: 768px) {
-  .example a {
-    font-size: 60px;
-  }
-}
-
-@media (min-width: 992px) {
-  .example a {
-    font-size: 80px;
-  }
+.example a {
+  font-size: 40px;
 }
 
 .example a {
