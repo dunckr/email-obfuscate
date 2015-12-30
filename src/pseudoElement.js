@@ -44,7 +44,6 @@ export default class PseudoElement {
 
   _generateText() {
     return `${this.options.name}@${this.options.domain}.${this.options.tld}`;
-
   }
 
 }

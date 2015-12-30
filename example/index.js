@@ -1,4 +1,4 @@
-import EmailObfuscate from '../src';
+import EmailObfuscate from '../src/emailObfuscate';
 
 var fontList = [
   'Arial',

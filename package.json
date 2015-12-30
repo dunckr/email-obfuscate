@@ -2,10 +2,11 @@
   "name": "email-obfuscate",
   "version": "0.0.3",
   "description": "Help prevent email addresses from being scraped",
-  "main": "src/index.js",
+  "main": "src/emailObfuscate.js",
   "scripts": {
     "start": "npm run clean && webpack-dev-server --hot",
     "test": "karma start --single-run",
+    "karma": "karma start",
     "lint": "eslint src",
     "build": "npm run clean && npm run lint && karma start --single-run && npm run build-example && npm run build-lib",
     "build-lib": "webpack",

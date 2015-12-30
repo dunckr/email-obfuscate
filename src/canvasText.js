@@ -1,27 +1,12 @@
-export default class CanvasText {
+import BaseText from './text';
 
-  constructor(parent, options) {
-    if (!parent) { throw new Error('Require DOM element'); }
-    if (!options) { throw new Error('Require options'); }
-    this.parent = parent;
-    this.options = options;
-  }
+export default class CanvasText extends BaseText {
 
   create() {
     this._createCanvas();
     this._createText();
     this._addEvents();
     return this.canvas;
-  }
-
-  handleOnClick() {
-    window.location.href = `mailto:${this.options.text}`;
-  }
-
-  handleOnHover() {}
-
-  _addEvents() {
-    this.parent.addEventListener('click', () => this.handleOnClick());
   }
 
   _createCanvas() {

@@ -1,5 +1,5 @@
 import expect from 'expect'
-import describedSpec from '../src';
+import describedSpec from '../src/emailObfuscate';
 
 describe('EmailObfuscate', () => {
   var subject;
