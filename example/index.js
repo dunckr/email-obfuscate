@@ -42,7 +42,7 @@ var emailObfuscate = () => {
 }
 
 var generateStyle = (fontFamily) => {
-  var css = `.example a { font-family: "${fontFamily}" }`
+  var css = `.example__a { font-family: "${fontFamily}" }`
   var style = document.createElement('style')
   style.appendChild(document.createTextNode(css))
   var exisitingStyle = document.head.getElementsByTagName('style')

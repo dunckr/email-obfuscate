@@ -1,39 +1,109 @@
 html {
+  background-color: #E1EBF7;
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-  font: 100%/1.5 "Roboto", Verdana, sans-serif;
+  font: 100%/1.5 "Fira Sans", Verdana, sans-serif;
+  background-color: #FFFFFF;
+  color: #494949;
 }
 
-.title h1  {
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.columns {
+  width: 100%;
+  float: left;
+}
+
+.six.columns {
+  width: 48%;
+}
+
+@media (min-width: 800px) {
+  .two.columns {
+    width: 13.3333333333%;
+  }
+}
+
+@media (min-width: 800px) {
+  .ten.columns {
+    width: 82.6666666667%;
+  }
+}
+
+.title {
   padding: 80px 40px 0;
+}
+
+.title .icon {
   text-align: center;
 }
 
-.title p  {
+.title h1 {
   text-align: center;
+  text-transform: uppercase;
+}
+
+.title p {
+  text-align: center;
+}
+
+p,
+span {
+  color: #A5A5A5;
+}
+
+a {
+  color: #94C8FF;
+  text-decoration: underline;
 }
 
 section {
-  padding: 40px;
+  padding: 5px;
+}
+
+@media (min-width: 800px) {
+  section {
+    padding: 40px;
+  }
 }
 
 form {
   text-align: center;
 }
 
+@media (min-width: 800px) {
+  .control {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+}
+
 .example {
-  padding: 40px 0;
+  background-color: #F8F9FA;
+  color: #4D4D4D;
 }
 
-a {
-  color: #337ab7;
-  text-decoration: underline;
+@media (min-width: 800px) {
+  .example {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
 }
 
-#clear, #obfuscated {
+.example span {
+  line-height: 4;
+}
+
+#clear,
+#obfuscated {
   font-size: 40px;
+  margin: 0;
 }
 
 h3 {
@@ -48,7 +118,7 @@ select {
   line-height: 1.42857143;
   background-color: #fff;
   background-image: none;
-  border: 1px solid #ccc;
+  border: 1px solid #F0F0F1;
   border-radius: 4px;
 }
 
@@ -60,7 +130,25 @@ option {
   min-height: 1.2em;
 }
 
+pre {
+  background-color: #FFFFFF;
+  border: 1px solid #F0F0F1;
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+}
+
+code {
+  text-shadow: 0 1px white;
+  font-family: 'Open Sans', Consolas, Monaco, 'Andale Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+}
+
 footer {
+  background-color: #E1EBF7;
+  padding: 40px;
   float: right;
 }
 

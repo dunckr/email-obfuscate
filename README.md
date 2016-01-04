@@ -2,7 +2,7 @@
 
 ![Example](https://raw.githubusercontent.com/dunckr/email-obfuscate/master/example/example.jpg)
 
-Help prevent email addresses from being scraped.
+Guard email addresses from being simply scraped by bots.
 
 ## Demo
 
