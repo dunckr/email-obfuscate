@@ -24,12 +24,16 @@ body {
   width: 48%;
 }
 
-.two.columns {
-  width: 13.3333333333%;
+@media (min-width: 800px) {
+  .two.columns {
+    width: 13.3333333333%;
+  }
 }
 
-.ten.columns {
-  width: 82.6666666667%;
+@media (min-width: 800px) {
+  .ten.columns {
+    width: 82.6666666667%;
+  }
 }
 
 .title {
@@ -60,23 +64,36 @@ a {
 }
 
 section {
-  padding: 40px;
+  padding: 5px;
+}
+
+@media (min-width: 800px) {
+  section {
+    padding: 40px;
+  }
 }
 
 form {
   text-align: center;
 }
 
-.control {
-  padding-left: 20%;
-  padding-right: 20%;
+@media (min-width: 800px) {
+  .control {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
 }
 
 .example {
   background-color: #F8F9FA;
   color: #4D4D4D;
-  padding-left: 20%;
-  padding-right: 20%;
+}
+
+@media (min-width: 800px) {
+  .example {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
 }
 
 .example span {
