@@ -3,59 +3,109 @@
 
 <head>
   <title>Email Obfuscate</title>
-  <link rel="stylesheet" href="./style.css">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans|Josefin+Sans|Arvo|Lato|Volkhov|Abril+Fatface|Ubuntu|PT+Serif|Droid+Sans|Old+Standard+TT' rel='stylesheet' type='text/css'>
+  <link href="./style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Josefin+Sans|Arvo|Lato|Volkhov|Abril+Fatface|Ubuntu|PT+Serif|Droid+Sans|Old+Standard+TT" rel="stylesheet" type="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" rel="stylesheet" type="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.css" rel="stylesheet" type="text/css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.10/webfontloader.js"></script>
 </head>
 
 <body>
   <a href="https://github.com/dunckr/email-obfuscate" class="github-corner">
-    <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;">
+    <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;">
       <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
       <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
       <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
     </svg>
   </a>
-  <header class="island">
-    <div class="wrap">
-      <h1>Email Obfuscate</h1>
-      <p>Prevent email addresses from being scraped.</p>
-    </div>
-  </header>
-  <section class="island">
-    <div class="wrap">
+  <div class="container">
+    <header class="">
+      <div class="title">
+        <h1>Email Obfuscate</h1>
+        <p>Prevent email addresses from being simply scraped.</p>
+      </div>
+    </header>
+    <section class="row">
       <form>
-        <label for="fontSelection">Change Font:</label>
-        <select id="fontSelection" name="fontSelection"></select>
+        <div class="two columns">
+          <label for="fontSelection">Change Font:</label>
+        </div>
+        <div class="ten columns">
+          <select id="fontSelection" name="fontSelection"></select>
+        </div>
       </form>
-    </div>
-  </section>
-  <section class="example">
-    <div class="wrap">
-      <h3>Clear:</h3>
-    </div>
-    <div class="example__sample">
-      <a href="mailto:email@obfuscate.js">email@obfuscate.js</a>
-    </div>
-    <div class="example__title">
-      <h3>Obfuscated:</h3>
-    </div>
-    <div class="example__sample">
-      <p id="email"></p>
-    </div>
-  </section>
-  <section class="island">
-    <div class="wrap">
-      <a href="https://github.com/dunckr/email-obfuscate">View on Github</a>
-    </div>
-  </section>
-  <footer class="island">
-    <div class="wrap">
-      <p>by <a href="http://dunckr.com">dunckr</a></p>
-    </div>
-  </footer>
+    </section>
+    <section class="row example">
+      <div class="two columns">
+        <h5>Clear:</h5>
+      </div>
+      <div class="five columns">
+        <a id="clear" href="mailto:email@obfuscate.js">email@obfuscate.js</a>
+      </div>
+      <div class="five columns">
+        <pre><code id="clearHtml" class="language-markup"></code></pre>
+      </div>
+    </section>
+    <section class="row example">
+      <div class="two columns">
+        <h5>Obfuscated:</h5>
+      </div>
+      <div class="five columns">
+        <p id="obfuscated"></p>
+      </div>
+      <div class="five columns">
+        <pre><code id="obfuscatedHtml" class="language-markup"></code></pre>
+      </div>
+    </section>
+    <section class="">
+      <div>
+        <h3>Installation:</h3>
+      </div>
+      <div class="example__code">
+        <pre><code class="language-bash"> npm install email-obfuscate</code></pre>
+      </div>
+      <div>
+        <h3>Usage:</h3>
+      </div>
+      <div class="example__code">
+        <pre><code class="language-javascript">import EmailObfuscate from 'email-obfuscate';
 
+var el = document.getElementById('email');
+
+EmailObfuscate(el, {
+  // Email construct: name@domain.tld
+  name: 'test',
+  domain: 'example',
+  tld: 'com',
+  // Alternate Text
+  altText: 'Email'
+});</code></pre>
+      </div>
+      <div>
+        <h3>Overview:</h3>
+      </div>
+      <p>
+        Email addresses are
+        <a href="https://en.wikipedia.org/wiki/Email_address_harvesting">harvested</a> from websites using
+        <a href="https://github.com/lorien/awesome-web-scraping">web scrapers</a>. There are many strategies that can be employed to mitigate scrapers:
+        <a href="http://security.stackexchange.com/questions/81964/are-web-scrapers-fooled-by-obscured-emails-anymore">1</a>
+        <a href="https://www.quora.com/Whats-the-best-way-to-prevent-email-scraping">2</a>
+        <a href="http://stackoverflow.com/questions/3161548/how-do-i-prevent-site-scraping">3</a>
+        <a href="http://stackoverflow.com/questions/23002711/how-to-show-email-addresses-on-the-website-to-avoid-spams">4</a>.
+      </p>
+      <p>However, it must be noted that preventing scraping is an
+        <a href="https://en.wikipedia.org/wiki/Arms_race">arms-race</a>.
+      </p>
+      <p>This library's aim to prevent searching for <code class="language-javascript">mailto</code> links or using email address regexes.</p>
+      <p>It does this by constructing an email address from an object then drawing the text as an image using the canvas.</p>
+      <p>For older browsers without a canvas (IE8) we append an element using the alternate text.</p>
+    </section>
+    <footer class="row">
+      <p>by <a href="http://dunckr.com">dunckr</a></p>
+    </footer>
+  </div>
   <script src="bundle.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.js" data-default-language="javascript"></script>
 </body>
 
 </html>
