@@ -84,6 +84,10 @@ form {
   }
 }
 
+.control label {
+  line-height: 2;
+}
+
 .example {
   background-color: #F8F9FA;
   color: #4D4D4D;
