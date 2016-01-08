@@ -1,27 +1,28 @@
-import path from 'path';
-import webpack from 'webpack';
-import assign from 'object-assign';
+const path = require('path')
+const webpack = require('webpack')
 
-const TARGET = process.env.npm_lifecycle_event;
+const TARGET = process.env.npm_lifecycle_event
 const config = {
   library: 'EmailObfuscate',
-  filename: 'emailObfuscate'
-};
+  filename: 'emailObfuscate',
+  example: 'index',
+  bundle: 'bundle'
+}
 const paths = {
   SRC: path.resolve(__dirname, './src'),
   EXAMPLE: path.resolve(__dirname, './example'),
   BUILD: path.resolve(__dirname, './lib')
-};
+}
 
 var webpackBase = {
   output: {
     path: paths.EXAMPLE,
-    filename: 'bundle.js'
+    filename: `${config.bundle}.js`
   },
   module: {
     loaders: [{
       test: /\.js?$/,
-      loader: 'babel?stage=0&loose',
+      loader: 'babel-loader',
       include: [paths.SRC, paths.EXAMPLE],
       exclude: /node_modules/
     }],
@@ -32,13 +33,13 @@ var webpackBase = {
       exclude: /node_modules/
     }]
   }
-};
+}
 
 if (TARGET === 'start' || !TARGET) {
-  module.exports = assign(webpackBase, {
+  module.exports = Object.assign(webpackBase, {
     entry: [
       'webpack/hot/dev-server',
-      paths.EXAMPLE + '/index.js'
+      `${paths.EXAMPLE}/${config.example}.js`
     ],
     devtool: 'source-map',
     devServer: {
@@ -52,12 +53,12 @@ if (TARGET === 'start' || !TARGET) {
         'process.env.NODE_ENV': JSON.stringify('development')
       })
     ]
-  });
+  })
 }
 
 if (TARGET === 'build-example') {
-  module.exports = assign(webpackBase, {
-    entry: paths.EXAMPLE + '/index.js',
+  module.exports = Object.assign(webpackBase, {
+    entry: `${paths.EXAMPLE}/${config.example}.js`,
     plugins: [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')
@@ -68,12 +69,12 @@ if (TARGET === 'build-example') {
         }
       })
     ]
-  });
+  })
 }
 
 if (TARGET === 'build-lib') {
-  module.exports = assign(webpackBase, {
-    entry: paths.SRC + '/emailObfuscate.js',
+  module.exports = Object.assign(webpackBase, {
+    entry: `${paths.SRC}/${config.filename}.js`,
     output: {
       path: paths.BUILD,
       libraryTarget: 'umd',
@@ -83,7 +84,7 @@ if (TARGET === 'build-lib') {
     module: {
       loaders: [{
         test: /\.js?$/,
-        loader: 'babel?stage=0&loose',
+        loader: 'babel-loader',
         include: [paths.SRC],
         exclude: /node_modules/
       }],
@@ -98,5 +99,5 @@ if (TARGET === 'build-lib') {
         }
       })
     ]
-  });
+  })
 }

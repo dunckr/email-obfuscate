@@ -1,14 +1,12 @@
-'use strict';
+const path = require('path')
+const webpack = require('webpack')
 
-var path = require('path');
-var webpack = require('webpack');
-
-var paths = {
+const paths = {
   SRC: path.resolve(__dirname, 'src'),
   TEST: path.resolve(__dirname, 'test')
-};
+}
 
-module.exports = function(config) {
+module.exports = (config) => {
   config.set({
 
     frameworks: ['mocha'],
@@ -33,7 +31,7 @@ module.exports = function(config) {
       module: {
         loaders: [{
           test: /\.js?$/,
-          loader: 'babel?stage=0&loose',
+          loader: 'babel-loader',
           include: [paths.SRC, paths.TEST],
           exclude: /node_modules/
         }],
@@ -59,5 +57,5 @@ module.exports = function(config) {
 
     singleRun: false
 
-  });
-};
+  })
+}
