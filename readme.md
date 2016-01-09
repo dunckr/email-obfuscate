@@ -48,6 +48,46 @@ EmailObfuscate(el, {
 });
 ```
 
+## API
+
+### EmailObfuscate(el, [options])
+
+#### el
+
+Type: `HTMLElement`
+
+The element to replace with EmailObfuscate.
+
+#### options
+
+##### name
+
+Type: `string`  
+Default: `test`
+
+The name portion of the email address to use (**name**@email.com).
+
+##### domain
+
+Type: `string`  
+Default: `example`
+
+The domain name portion of the email address to use (name@**email**.com).
+
+##### tld
+
+Type: `string`  
+Default: `com`
+
+The top-level domain portion of the email address to use (name@email.**com**).
+
+##### altText
+
+Type: `string`  
+Default: `Email`
+
+The alternate text to use to represent the email address.  
+
 ## Dev
 
 ```sh
