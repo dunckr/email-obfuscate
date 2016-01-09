@@ -2,9 +2,9 @@ import expect from 'expect'
 import describedSpec from '../src/emailObfuscate'
 
 describe('EmailObfuscate', () => {
-  var subject
-  var el
-  var canvas
+  let subject
+  let el
+  let canvas
 
   beforeEach(() => {
     el = document.createElement('div')

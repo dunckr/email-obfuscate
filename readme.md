@@ -28,7 +28,7 @@ For older browsers without a canvas (IE8) we append an element using the alterna
 ## Installation
 
 ```sh
-npm install email-obfuscate
+npm install email-obfuscate --save
 ```
 
 ## Usage

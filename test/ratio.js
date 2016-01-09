@@ -1,20 +1,20 @@
 import expect from 'expect'
-import describeClass from '../src/ratio';
+import describeClass from '../src/ratio'
 
 describe('Ratio', () => {
-  var subject;
-  var context = (ratio) => {
+  let subject
+  const context = (ratio) => {
     return {
       webkitBackingStorePixelRatio: ratio,
       mozBackingStorePixelRatio: ratio,
       msBackingStorePixelRatio: ratio,
       oBackingStorePixelRatio: ratio,
       backingStorePixelRatio: ratio
-    };
+    }
   }
 
   it('should determine the correct pixel ratio', () => {
-    var values = [{
+    const values = [{
       input: 1,
       output: 1
     }, {
@@ -26,9 +26,9 @@ describe('Ratio', () => {
     }]
 
     values.map((v) => {
-      subject = new describeClass(context(v.input));
-      expect(subject.calculate()).toEqual(v.output);
-    });
-  });
+      subject = new describeClass(context(v.input))
+      expect(subject.calculate()).toEqual(v.output)
+    })
+  })
 
-});
+})
