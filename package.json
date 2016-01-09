@@ -1,7 +1,7 @@
 {
   "name": "email-obfuscate",
-  "version": "0.0.4",
-  "description": "Help prevent email addresses from being scraped",
+  "version": "0.0.5",
+  "description": "Guard email addresses from being simply scraped by bots.",
   "main": "src/emailObfuscate.js",
   "scripts": {
     "start": "npm run clean && webpack-dev-server --hot",
@@ -21,6 +21,7 @@
   "keywords": [
     "email",
     "obfuscate",
+    "guard",
     "scrape",
     "bot",
     "prevent",

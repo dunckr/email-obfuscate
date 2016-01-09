@@ -10,17 +10,30 @@ const DEFAULTS = {
   altText: 'Email',
 }
 
-export default (el, opts = {}) => {
-  const options = assign(DEFAULTS, opts)
+export class EmailObfuscate {
 
-  if (window.HTMLCanvasElement) {
-    const pseudoElement = new PseudoElement(el, options)
-    const style = pseudoElement.determineStyle()
-    const canvasText = new CanvasText(el, style)
-    canvasText.create()
-  } else {
-    const simpleText = new SimpleText(el, options)
-    simpleText.create()
+  constructor(el, opts = {}) {
+    this.el = el
+    const options = assign(DEFAULTS, opts)
+    if (window.HTMLCanvasElement) return this._pseudoElement(options)
+    return this._simpleText(options)
   }
-  return el
+
+  // private
+
+  _pseudoElement(options) {
+    const pseudoElement = new PseudoElement(this.el, options)
+    const style = pseudoElement.determineStyle()
+    const canvasText = new CanvasText(this.el, style)
+    return canvasText.create()
+  }
+
+  _simpleText(options) {
+    const simpleText = new SimpleText(this.el, options)
+    return simpleText.create()
+  }
+}
+
+export default (el, opts) => {
+  return new EmailObfuscate(el, opts)
 }
