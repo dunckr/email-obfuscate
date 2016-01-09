@@ -94,7 +94,7 @@ form {
 }
 
 @media (min-width: 800px) {
-  .example {
+  section {
     padding-left: 20%;
     padding-right: 20%;
   }
