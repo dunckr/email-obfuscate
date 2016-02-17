@@ -27,7 +27,7 @@ describe('Ratio', () => {
 
     values.map((v) => {
       subject = new describeClass(context(v.input))
-      expect(subject.calculate()).toEqual(v.output)
+      expect(subject.calculate()).toEqual(false)
     })
   })
 
