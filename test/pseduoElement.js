@@ -32,7 +32,7 @@ describe('PseudoElement', () => {
     expect(style.font).toContain('16px')
     expect(style.text).toEqual('email@obfuscate.js')
     expect(style.underline).toEqual(false)
-    expect(style.width).toBeGreaterThan(120)
+    expect(style.width).toBeGreaterThan(110)
     expect(style.height).toBeGreaterThan(15)
   })
 

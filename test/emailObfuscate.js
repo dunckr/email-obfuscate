@@ -24,7 +24,7 @@ describe('EmailObfuscate', () => {
     })
 
     it('should have specific width', () => {
-      expect(canvas.width).toBeGreaterThan(120)
+      expect(canvas.width).toBeGreaterThan(110)
     })
 
     it('should have specific height', () => {
