@@ -106,6 +106,17 @@ npm run test
 npm run build
 ```
 
+## FAQ
+
+### My create-react-app build fails when minifying this package
+
+create-react-app fails when a dependency is using ES6 features. Use the compiled version to fix it:
+
+```diff
+-import EmailObfuscate from "email-obfuscate";
++import EmailObfuscate from "email-obfuscate/lib/emailObfuscate";
+```
+
 ## License
 
 MIT © [Duncan Beaton](http://dunckr.com)
