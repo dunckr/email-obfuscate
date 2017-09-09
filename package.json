@@ -1,6 +1,6 @@
 {
   "name": "email-obfuscate",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Guard email addresses from being simply scraped by bots.",
   "main": "lib/emailObfuscate.js",
   "scripts": {
